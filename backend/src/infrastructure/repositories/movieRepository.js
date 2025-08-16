@@ -97,7 +97,7 @@ export const getAverageRating = async () => {
 export const getAverageRuntimeByYear = async () => {
   try {
     return await Movie.aggregate([
-      { $group: { _id: "$year", avgRuntime: { $avg: "$runtime" } } },
+      { $group: { _id: "$year", avgRuntime: { $avg: "$runTime" } } },
       { $project: { _id: 0, year: "$_id", avgRuntime: 1 } },
       { $sort: { year: 1 } }
     ]);

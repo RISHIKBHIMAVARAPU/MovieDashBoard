@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 
 app.use(express.json());
-app.use('/api/user', userRouter);
+app.use('/user', userRouter);
 app.use('/movie',movieRouter);
 app.use('/admin',adminRouter);
 

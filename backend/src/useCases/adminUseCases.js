@@ -1,5 +1,7 @@
 import * as AdminRepository from '../infrastructure/repositories/adminRepository.js';
+import  * as MovieRepository from '../infrastructure/repositories/movieRepository.js';
 import { generateToken } from "../middlewares/auth.js";
+import bcrypt from "bcryptjs";
 
 export const adminLoginUseCase = async ({phoneNo, password}) => {
   try {
@@ -22,7 +24,7 @@ export const adminLoginUseCase = async ({phoneNo, password}) => {
 
 export const deleteAllCachedMovies = async () => {
   try {
-    return await AdminRepository.deleteAllCachedMovies();
+    return await MovieRepository.deleteAllCachedMovies();
   } catch (error) {
     console.error('Error deleting all cached movies:', error);
     throw error;
@@ -31,7 +33,7 @@ export const deleteAllCachedMovies = async () => {
 
 export const readAllCachedMovies = async () => {
   try {
-    return await AdminRepository.readAllCachedMovies();
+    return await MovieRepository.readAllCachedMovies();
   } catch (error) {
     console.error('Error reading all cached movies:', error);
     throw error;
