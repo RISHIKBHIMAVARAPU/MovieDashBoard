@@ -5,21 +5,21 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    type: {
+        type: String,
+    },
     title: {
         type: String,
         required: true
     },
     year: {
-        type: Number,
-        required: true
+        type: String,
     },
     genre: {
         type: [String],
-        required: true
     },
     director: {
         type: String,
-        required: true
     },
     actors: {
         type: [String],
@@ -27,11 +27,9 @@ const movieSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true
     },
     runTime : {
         type: Number,
-        required: true
     },
     lastUsedAt: {
         type: Date,
@@ -40,6 +38,6 @@ const movieSchema = new mongoose.Schema({
     }
 });
 
-const Movie = mongoose.model('MoviesCache', movieSchema);
+const Movie = mongoose.model('MoviesMetaData', movieSchema);
 
 export default Movie;

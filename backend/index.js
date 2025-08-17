@@ -1,16 +1,25 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import cors from "cors";
 dotenv.config();
 
 import userRouter from './src/routes/user.js';
 import movieRouter from './src/routes/movie.js';
 import adminRouter from './src/routes/admin.js';
 
-
 const app = express();
+app.use(cors());
+
+app.use(cors({
+  origin: "http://localhost:3000", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
+
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
+
 
 app.use(express.json());
 app.use('/user', userRouter);

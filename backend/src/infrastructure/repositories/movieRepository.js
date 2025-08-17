@@ -10,14 +10,22 @@ export const createMovie = async (movieData) => {
   }
 };
 
-export const getMovieByTitle = async (title) => {
+export const bulkCreateMovies = async (movies) => {
   try {
-    return await Movie.findOne({ title });
+    return await Movie.insertMany(movies);
   } catch (error) {
-    console.error('Error fetching movie by title:', error);
+    console.error('Error while inserting multiple movies:', error);
     throw error;
   }
 };
+
+export const getMoviesByTitle = async (title) => {
+  const words = title.split(" ");  
+  const conditions = words.map(word => ({
+    title: { $regex: word, $options: "i" } 
+  }))
+  return await Movie.find({ $and: conditions });
+}
 
 export const getAllMovies = async () => {
   try {
@@ -65,6 +73,16 @@ export const updateLastUsedAt = async (id) => {
     return updatedMovie;
   } catch (error) {
     console.error('Error updating last used time:', error);
+    throw error;
+  }
+};
+
+export const updateMoviesLastUsedAt = async (ids) => {
+  try {
+    const update = { $set: { lastUsedAt: new Date() } };
+    return await Movie.updateMany({ _id: { $in: ids } }, update);
+  } catch (error) {
+    console.error('Error updating last used time for multiple movies:', error);
     throw error;
   }
 };
