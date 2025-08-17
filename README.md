@@ -33,7 +33,7 @@ admin login:
 http://localhost:3000/admin/login
 after login he can see the whole stats of the movies
 
-Backend Engineering and Clean code: 
+# Backend Engineering and Clean code: 
 Authenication using jwt for all the routes
 Database : mongodb
 Models : 
@@ -44,5 +44,7 @@ Models :
 movies, moive details docs are invalidated after 24 hrs
 
 code flow : 
+
 routes->controllers->usecases->repository->database interactions
-usecase : business logic
+
+usecase : contains only business logic
