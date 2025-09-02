@@ -18,7 +18,6 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "node": "node index.js",
     "seed:admin": "node ./Scripts/seedAdmin.js",
     "start": "node index.js"
   },
